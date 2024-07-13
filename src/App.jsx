@@ -1,20 +1,18 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Component import
+// Component imports
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import About from "./components/About/About";
-import Services from "./components/Services/Services";
-import CarList from "./components/CarList/CarList";
-import AppStoreBanner from "./components/AppStoreBanner/AppStoreBanner";
-import Contact from "./components/Contact/Contact";
-import Testimonial from "./components/Testimonial/Testimonial";
+import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
+import CarList from "./components/CarList/CarList";
+import About from "./components/About/About";
+import BookNow from "./components/BookNow/BookNow";
 
 const App = () => {
-  // dark mode start
+  // Dark mode start
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -29,9 +27,9 @@ const App = () => {
       localStorage.setItem("theme", "light");
     }
   }, [theme]);
-  // dark mode end
+  // Dark mode end
 
-  React.useEffect(() => {
+  useEffect(() => {
     AOS.init({
       offset: 100,
       duration: 800,
@@ -40,17 +38,20 @@ const App = () => {
     });
     AOS.refresh();
   }, []);
+
   return (
     <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
-      <Navbar theme={theme} setTheme={setTheme} />
-      <Hero theme={theme} />
-      <About />
-      <Services />
-      <CarList />
-      <Testimonial />
-      <AppStoreBanner />
-      <Contact />
-      <Footer />
+      <Router basename="/CarRental">
+        <Navbar theme={theme} setTheme={setTheme} />
+        <Routes>
+          <Route exact path="/" element={<Home theme={theme} />} />
+          <Route exact path="/cars" element={<CarList />} />
+          <Route exact path="/about" element={<About/>} />
+          <Route exact path="/book" element={<BookNow/>} />
+          {/* Add other routes here */}
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 };

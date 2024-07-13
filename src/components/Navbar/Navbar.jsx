@@ -13,7 +13,7 @@ export const Navlinks = [
   {
     id: 2,
     name: "CARS",
-    link: "/cars",
+    link: "/Maincars",
   },
   {
     id: 3,

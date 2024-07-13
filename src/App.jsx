@@ -7,9 +7,10 @@ import "aos/dist/aos.css";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
-import CarList from "./components/CarList/CarList";
+
 import About from "./components/About/About";
 import BookNow from "./components/BookNow/BookNow";
+import MainCarList from "./components/CarList/MainCarList"
 
 const App = () => {
   // Dark mode start
@@ -45,7 +46,8 @@ const App = () => {
         <Navbar theme={theme} setTheme={setTheme} />
         <Routes>
           <Route exact path="/" element={<Home theme={theme} />} />
-          <Route exact path="/cars" element={<CarList />} />
+          {/* <Route exact path="/cars" element={<CarList />} /> */}
+          <Route exact path="/Maincars" element = {<MainCarList/>}/>
           <Route exact path="/about" element={<About/>} />
           <Route exact path="/book" element={<BookNow/>} />
           {/* Add other routes here */}

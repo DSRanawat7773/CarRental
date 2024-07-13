@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import whiteCar from "../../assets/white-car.png";
 import car2 from "../../assets/car5.png";
 import car3 from "../../assets/car6.png";
 import kwid from "../../assets/kwid.png"
+import baleno from "../../assets/baleno.png"
+import Dzire from "../../assets/Dzire.png"
 
-const carList = [
+const MainCarList = [
   {
     name: "Range Rover",
     price: 100,
@@ -16,23 +17,46 @@ const carList = [
     name: "Scorpio s11",
     price: 140,
     image: car2,
-    aosDelay: "500",
+    aosDelay: "300",
   },
   {
     name: "Scorpio old",
     price: 100,
     image: car3,
-    aosDelay: "1000",
-  }
+    aosDelay: "600",
+  },
+  {
+    name: "Baleno",
+    price: 100,
+    image: baleno,
+    aosDelay: "800",
+  },
+  {
+    name: "Kwid",
+    price: 100,
+    image: kwid,
+    aosDelay: "800",
+  },
+  {
+    name: "Dzire",
+    price: 100,
+    image: Dzire,
+    aosDelay: "800",
+  },
+  {
+    name: "Scorpio old",
+    price: 100,
+    image: car3,
+    aosDelay: "800",
+  },
+  
+
 ];
 
-const handleGetStarted = () => {
-  navigate("/MainCarList");
-};
 
 const CarList = () => {
   return (
-    <div className="pb-24">
+    <div className="pb-24" id="Maincars">
       <div className="container">
         {/* Heading */}
         <h1
@@ -41,14 +65,10 @@ const CarList = () => {
         >
           Cars Available
         </h1>
-        <p data-aos="fade-up" aos-delay="400" className="text-sm pb-10">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor iure
-          nemo ab?
-        </p>
         {/* Car listing */}
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
-            {carList.map((data) => (
+            {MainCarList.map((data) => (
               <div
                 data-aos="fade-up"
                 data-aos-delay={data.aosDelay}
@@ -76,11 +96,6 @@ const CarList = () => {
           </div>
         </div>
         {/* End of car listing */}
-        <div className="grid place-items-center mt-8">
-        <button data-aos="fade-up" className="button-outline" onClick={handleGetStarted}>
-        <Link to= "/Maincars">See More...</Link>
-          </button>
-        </div>
       </div>
     </div>
   );
